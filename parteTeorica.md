@@ -1,5 +1,7 @@
 # desafioSemantix
-Desafio Técnico - Engenheiro de Dados *Leonardo Damasio*
+**Desafio Técnico** - Engenheiro de Dados 
+
+**_Leonardo Damasio_**
 
 ## Parte Teórica
 
