@@ -17,6 +17,10 @@
 
 > Isto acontece porque o MapReduce normalmente processa dados em disco (HDFS), enquanto o Spark processa tanto em disco quanto em memória. Ou seja, enquanto MapReduce realiza consultas frequentes ao HDFS, todo o processamento no Spark pode acontecer na memória. 
 
+> Veja na simplificação abaixo:
+
+![](https://www.xpand-it.com/wp-content/uploads/2019/06/meetup-spark-intro-data-sharing.png)
+
 > Em compensação, gigantescos volumes de dados, nos quais não se é possível realizar todo o processo em memória, MapReduce ainda é utilizado. Geralmente, por consenso da comunidade, baseado em benchmarking de ambos, o Spark é utilizado para volumes de dados em até 1TB e MapReduce para volumos superiores a isto. Mas claro, tudo depende da capacidade do cluster à disposição. 
 
 > Tudo isso faz com que MapReduce seja bem limitado quando trabalhamos com modelos iterativos, como, por exemplo, de Machine Learning. O que já não acontece no Spark, pois, através do uso de RDDs, armazenados em memória, o tempo de execução se torna bem menor.
