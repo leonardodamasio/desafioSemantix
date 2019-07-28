@@ -75,13 +75,13 @@ counts . saveAsTextFile ( "hdfs://..." )
 ```scala
 val textFile = sc . textFile ( "hdfs://..." )
 ```
-> `val` para definir `textFile` como um valor fixo (objeto, assim como a documentação Scala nos diz "*Scala é uma linguagem puramente orientada a objetos no sentido que todo valor é um objeto.*" Fonte: [Scala Documentation](https://docs.scala-lang.org/pt-br/tutorials/tour/tour-of-scala.html.html) ).
+> `val` para definir `textFile` como um valor fixo (objeto, assim como a documentação Scala nos diz: "*Scala é uma linguagem puramente orientada a objetos no sentido que todo valor é um objeto.*" Fonte: [Scala Documentation](https://docs.scala-lang.org/pt-br/tutorials/tour/tour-of-scala.html.html) ).
 
 > `sc` para chamar o `SparkContext` (`sc` aqui foi tratado como alias de `SparkContext`).
 
 > Método `textFile` para ler o conteúdo do arquivo na URL, que está indicando um caminho do HDFS.
 
-> *Resumindo*: Lê um arquivo do HDFS e armazena na RDD `textFile`.
+> *Resumindo*: Lê um arquivo do HDFS e armazena no RDD `textFile`.
 
 ```scala
 val counts = textFile . flatMap ( line => line . split ( " " ))
@@ -91,19 +91,19 @@ val counts = textFile . flatMap ( line => line . split ( " " ))
 
 > `val` para definir `counts` como um valor fixo (objeto).
 
-> `textFile` agora é nossa RDD (objeto), na qual aplicamos uma transformação `.flatMap` que basicamente mapeia os dados com a função `split` por espaços (`" "`), devolvendo-os de forma o elemento linha em elementos palavras.
+> `textFile` agora é nosso RDD (objeto), no qual aplicamos uma transformação `.flatMap` que basicamente mapeia os dados com a função `split` por espaços (`" "`), devolvendo-os de forma o elemento linha em elementos palavras.
 
 > `map` para atribuir a cada palavra desta lista um valor (`1`), transformando cada conjunto destes em uma tupla.
 
 >`reduceByKey` para reduzir através do argumento `( _ + _ )`, o que permite eliminar as palavras duplicadas desta nova lista e contar o número de ocorrências no segundo elemento de cada tupla. Ou seja, realiza uma contagem de quantas vezes determinada palavra se repete.
 
-> *Resumindo*: Cria uma uma nova RDD chamada `counts` contendo uma transformação na RDD `textFile`, trazendo suas informações agora em formato de lista, separando seus itens nos locais onde havia espaços e atribuindo-lhes um valor (`1`), criando tuplas e as reduzindo para realizar uma contagem do primeiro elemento da tupla, no segundo elemento.
+> *Resumindo*: Cria um novo RDD chamado `counts` contendo uma transformação no RDD `textFile`, trazendo suas informações agora em formato de lista, separando seus itens nos locais onde havia espaços e atribuindo-lhes um valor (`1`), criando tuplas e as reduzindo para realizar uma contagem do primeiro elemento da tupla, no segundo elemento.
 
 ```scala
 counts . saveAsTextFile ( "hdfs://..." )
 ```
 
-> Por final, utiliza a ação `saveAsTextFile` para salvar esta RDD (`counts`) em um arquivo de texto no local indicado no parâmetro URL, pertencente ao HDFS ( `( "hdfs://..." )` ).
+> Por final, utiliza a ação `saveAsTextFile` para salvar este RDD (`counts`) em um arquivo de texto no local indicado no parâmetro URL, pertencente ao HDFS ( `( "hdfs://..." )` ).
 
 >*Resumo do código*: **Contagem de palavras**
 
