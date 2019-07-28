@@ -15,7 +15,7 @@
 
 * O mesmo código implementado em Spark é normalmente mais rápido que a implementação equivalente em MapReduce. Por quê?
 
-> Isto acontece porque o MapReduce normalmente processa dados em disco (HDFS), enquanto o Spark processa tanto em disco quanto em memória. Ou seja, enquanto MapReduce realiza consultas frequentes ao HDFS, todo o processamento no Spark pode acontecer na memória. 
+> Isto acontece porque o MapReduce normalmente processa dados em disco (HDFS), enquanto o Spark processa tanto em disco quanto em memória. Ou seja, enquanto MapReduce realiza consultas frequentes ao HDFS, o Spark pode fazê-lo apenas na primeira vez. 
 
 > Veja na simplificação abaixo:
 
