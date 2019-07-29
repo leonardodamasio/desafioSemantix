@@ -9,7 +9,7 @@
 
 > O objetivo do comando `cache` é basicamente armazenar um resultado computado do RDD na memória, permitindo que futuramente tenhamos acesso sem que necessitemos reprocessá-lo. É um mecanismo muito útil quando queremos acessar determinados dados repetidamente, trazendo um aumento de performance significativo em códigos iterativos. Também é tolerante a falha, pois automaticamente recupera uma informação perdida de uma partição do RDD através da linhagem de instruções que previamente a originou. 
 
-> Um comando que pode ser utilizado como similar ao cache é o `persist`. Enquanto cache utiliza por default o armazenamento apenas em memória (`MEMORY_ONLY`), o comando `persist` nos permite escolher se queremos armazenar de outros modos, como `MEMORY_ONLY`, que basicamente nos traria o mesmo resultado que o comando `cache`, ou de outros modos, como `MEMORY_ONLY_SER`, `MEMORY_AND_DISK`, `MEMORY_AND_DISK_SER`, `DISK_ONLY` ou `OFF_HEAP`, que ainda está em fase experimental para o Spark. 
+> Um comando que pode ser utilizado como similar ao `cache` é o `persist`. Enquanto `cache` utiliza por default o armazenamento apenas em memória (`MEMORY_ONLY`), o comando `persist` nos permite escolher se queremos armazenar de outros modos, como `MEMORY_ONLY`, que basicamente nos traria o mesmo resultado que o comando `cache`, ou de outros modos, como `MEMORY_ONLY_SER`, `MEMORY_AND_DISK`, `MEMORY_AND_DISK_SER`, `DISK_ONLY` ou `OFF_HEAP`, que ainda está em fase experimental para o Spark. 
 
 
 
@@ -21,7 +21,7 @@
 
 ![](https://www.xpand-it.com/wp-content/uploads/2019/06/meetup-spark-intro-data-sharing.png)
 
-> Em compensação, gigantescos volumes de dados, nos quais não se é possível realizar todo o processo em memória, MapReduce ainda é utilizado. Geralmente, por consenso da comunidade, baseado em benchmarking de ambos, o Spark é utilizado para volumes de dados em até 1TB e MapReduce para volumos superiores a isto. Mas claro, tudo depende da capacidade do cluster à disposição. 
+> Em compensação, gigantescos volumes de dados, nos quais não se é possível realizar todo o processo em memória, MapReduce ainda é utilizado. Geralmente, por consenso da comunidade, baseado em benchmarking de ambos, o Spark é utilizado para volumes de dados em até 1TB e MapReduce para volumes superiores a isto. Mas claro, tudo depende da capacidade do cluster à disposição. 
 
 > Tudo isso faz com que MapReduce seja bem limitado quando trabalhamos com modelos iterativos, como, por exemplo, de Machine Learning. O que já não acontece no Spark, pois, através do uso de RDDs, armazenados em memória, o tempo de execução se torna bem menor.
 
@@ -91,13 +91,13 @@ val counts = textFile . flatMap ( line => line . split ( " " ))
 
 > `val` para definir `counts` como um valor fixo (objeto).
 
-> `textFile` agora é nosso RDD (objeto), no qual aplicamos uma transformação `.flatMap` que basicamente mapeia os dados com a função `split` por espaços (`" "`), devolvendo-os de forma o elemento linha em elementos palavras.
+> `textFile` agora é nosso RDD (objeto), no qual aplicamos uma transformação `.flatMap` que basicamente mapeia os dados com a função `split` por espaços (`" "`), devolvendo-os de forma a dividir o elemento linha em elementos palavras.
 
 > `map` para atribuir a cada palavra desta lista um valor (`1`), transformando cada conjunto destes em uma tupla.
 
 >`reduceByKey` para reduzir através do argumento `( _ + _ )`, o que permite eliminar as palavras duplicadas desta nova lista e contar o número de ocorrências no segundo elemento de cada tupla. Ou seja, realiza uma contagem de quantas vezes determinada palavra se repete.
 
-> *Resumindo*: Cria um novo RDD chamado `counts` contendo uma transformação no RDD `textFile`, trazendo suas informações agora em formato de lista, separando seus itens nos locais onde havia espaços e atribuindo-lhes um valor (`1`), criando tuplas e as reduzindo para realizar uma contagem do primeiro elemento da tupla, no segundo elemento.
+> *Resumindo*: Cria um novo RDD chamado `counts` contendo uma transformação do RDD `textFile`, trazendo suas informações agora em formato de lista, separando seus itens nos locais onde havia espaços e atribuindo-lhes o valor (`1`), criando tuplas e as reduzindo para realizar uma contagem do primeiro elemento da tupla, no segundo elemento.
 
 ```scala
 counts . saveAsTextFile ( "hdfs://..." )
