@@ -31,7 +31,7 @@
 
 * Qual é a função do **SparkContext** ?
 
-> A função do `SparkContext` é servir como objeto de entrada às funcionalidades do Spark, servindo como cliente do ambiente de execução e permitindo a aplicação acessar o cluster, onde é possível informar algumas das configurações que utilizaremos, contendo, por exemplo, qual é o caminho para acessar o cluster (`Master`), qual o nome da aplicação (`appName`), como será feita a distribuição dos recursos como memória, executores, etc. (`Conf`), dentre outros. 
+> A função do `SparkContext` é servir como objeto de entrada às funcionalidades do Spark, servindo como cliente do ambiente de execução e permitindo a aplicação acessar o cluster, onde é possível informar algumas das configurações que utilizaremos, contendo, por exemplo, qual é o caminho para acessar o cluster (`Master`), qual o nome da aplicação (`appName`), como será feita a distribuição dos recursos como memória, executores, etc. (`config`), dentre outros. 
 
 > É considerada por muitos como o coração do Spark, pois através desta função conseguimos criar RDDs, acessar os serviços do Spark e rodar jobs. 
 
