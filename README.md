@@ -1,5 +1,6 @@
 # desafioSemantix
 **Desafio Técnico** - Engenheiro de Dados 
+* Aprovado! - Agosto/2019
 
 **_Leonardo Damasio_**
 
