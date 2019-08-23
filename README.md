@@ -16,7 +16,7 @@ O teste teórico está no arquivo `parteTeorica.md`.
 
 O teste prático foi feito através da linguagem *Python* no **Jupyter Notebook** e está no arquivo `partePratica.ipynb`.
 
-Para o teste prático, foi utilizado o módulo `pyspark.sql` e a biblioteca `pandas`.
+Para o teste prático, foi utilizado o módulo `pyspark.sql`, apenas para criar a sessão, e a biblioteca `pandas` para apresentar os resultados finais em dataframes.
 
 Qualquer dúvida, favor entrar em contato:
 
